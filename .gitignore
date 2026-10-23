@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+.env
+.coverage
+.pytest_cache/
+backend/__pycache__/
+frontend/.cache/
+
+# Local reference documents. Remove these lines if you intentionally want
+# to publish the report and syllabus PDFs in the GitHub repository.
+AGA Report.pdf
+Cseai -147-152.pdf

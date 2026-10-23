@@ -1,0 +1,29 @@
+{
+  "schema": "cybershield-flow-analyzer/1",
+  "source": "C1",
+  "destination": "SV1",
+  "threshold": 75,
+  "nodes": [
+    { "id": "C1",  "name": "Workstation",         "type": "C",  "status": "Active", "risk": 20, "segment": "Access", "fwdCap": 0,    "degradation": 50, "extra": "",                 "x": 60,  "y": 240 },
+    { "id": "S1",  "name": "Access Switch",       "type": "S",  "status": "Active", "risk": 25, "segment": "Access", "fwdCap": 0,    "degradation": 50, "extra": "",                 "x": 260, "y": 130 },
+    { "id": "AP1", "name": "Wi-Fi Access Point",  "type": "AP", "status": "Active", "risk": 45, "segment": "Access", "fwdCap": 0,    "degradation": 50, "extra": "8",                "x": 260, "y": 350 },
+    { "id": "R1",  "name": "Core Router A",       "type": "R",  "status": "Active", "risk": 35, "segment": "Core",   "fwdCap": 1000, "degradation": 50, "extra": "",                 "x": 480, "y": 70  },
+    { "id": "R2",  "name": "Core Router B",       "type": "R",  "status": "Active", "risk": 55, "segment": "Core",   "fwdCap": 1000, "degradation": 50, "extra": "",                 "x": 480, "y": 310 },
+    { "id": "F1",  "name": "Edge Firewall",       "type": "F",  "status": "Active", "risk": 30, "segment": "Edge",   "fwdCap": 0,    "degradation": 50, "extra": "2",                "x": 710, "y": 100 },
+    { "id": "V1",  "name": "VPN Gateway",         "type": "V",  "status": "Active", "risk": 60, "segment": "Edge",   "fwdCap": 0,    "degradation": 50, "extra": "3",                "x": 710, "y": 360 },
+    { "id": "SV1", "name": "Application Server",  "type": "SV", "status": "Active", "risk": 40, "segment": "Server", "fwdCap": 0,    "degradation": 50, "extra": "HTTPS, DB",        "x": 930, "y": 230 }
+  ],
+  "edges": [
+    { "id": "L1",  "source": "C1",  "target": "S1",  "type": "ethernet", "capacity": 1000, "latency": 1,  "risk": 10, "status": "Active", "reduction": 0, "saturation": 0, "extra": "99.9" },
+    { "id": "L2",  "source": "C1",  "target": "AP1", "type": "wifi",     "capacity": 300,  "latency": 5,  "risk": 45, "status": "Active", "reduction": 0, "saturation": 0, "extra": "-52" },
+    { "id": "L3",  "source": "S1",  "target": "R1",  "type": "fiber",    "capacity": 600,  "latency": 2,  "risk": 15, "status": "Active", "reduction": 0, "saturation": 0, "extra": "Physically secured" },
+    { "id": "L4",  "source": "S1",  "target": "R2",  "type": "ethernet", "capacity": 300,  "latency": 4,  "risk": 25, "status": "Active", "reduction": 0, "saturation": 0, "extra": "99.5" },
+    { "id": "L5",  "source": "AP1", "target": "R2",  "type": "ethernet", "capacity": 200,  "latency": 3,  "risk": 30, "status": "Active", "reduction": 0, "saturation": 0, "extra": "99.7" },
+    { "id": "L6",  "source": "R1",  "target": "F1",  "type": "fiber",    "capacity": 500,  "latency": 2,  "risk": 15, "status": "Active", "reduction": 0, "saturation": 0, "extra": "Physically secured" },
+    { "id": "L7",  "source": "R1",  "target": "V1",  "type": "ethernet", "capacity": 250,  "latency": 3,  "risk": 30, "status": "Active", "reduction": 0, "saturation": 0, "extra": "99.8" },
+    { "id": "L8",  "source": "R2",  "target": "F1",  "type": "ethernet", "capacity": 300,  "latency": 5,  "risk": 25, "status": "Active", "reduction": 0, "saturation": 0, "extra": "99.6" },
+    { "id": "L9",  "source": "R2",  "target": "V1",  "type": "ethernet", "capacity": 150,  "latency": 4,  "risk": 35, "status": "Active", "reduction": 0, "saturation": 0, "extra": "99.4" },
+    { "id": "L10", "source": "V1",  "target": "SV1", "type": "vpn",      "capacity": 200,  "latency": 12, "risk": 55, "status": "Active", "reduction": 0, "saturation": 0, "extra": "Medium" },
+    { "id": "L11", "source": "F1",  "target": "SV1", "type": "fiber",    "capacity": 400,  "latency": 3,  "risk": 10, "status": "Active", "reduction": 0, "saturation": 0, "extra": "Physically secured" }
+  ]
+}
